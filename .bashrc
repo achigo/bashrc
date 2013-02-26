@@ -38,14 +38,11 @@ esac
 # should be on the output of commands, not on the prompt
 force_color_prompt=yes
 ##############################################################################################
-# Achigo Force_Color_Prompt Config 2011/07/06 
+# Achigo Force_Color_Prompt Config 2013/02/26
 ##############################################################################################
 
-MyIP()
-{
-#ifconfig|grep Bcast|awk '{print $2}'|awk -F":" '{print $2}'
-/sbin/ifconfig eth0 | sed -n '0,/^\s\+inet addr:\([0-9]\+[.][0-9]\+[.][0-9]\    +[.][0-9]\+\).*$/s//\1/p'
-}
+#ip=`/bin/hostname -I`
+ip=`/sbin/ifconfig eth0 | /usr/bin/perl -ne 'if ( m/^\s*inet (?:addr:)?([\d.]+).*?cast/ ) { print qq($1\n); exit 0; }'`
 
 #ESC="\033["
 DEFAULT="\[\e[0m\]"    #default
@@ -64,7 +61,7 @@ FWHITE="\[\e[1;37m\]"   #white foreground   BWHITE="\[\e[0;47m\]"   #white backg
 #SETTING="${FRED}[${FYELLOW}\w${FRED}]\n${FGREEN}\u${FRED}@${FBLUE}\h${FPINK}[${FPINK}\d]"
 #SETTING="${FRED}[${FYELLOW}\w${FRED}]\n${FGREEN}\u${FRED}@${FBLUE}\h${FCYAN}[${FCYAN}\d]${FPINK}[${FPINK}\t]"
 #SETTING="${FRED}[${FYELLOW}\w${FRED}]\n${FGREEN}\u${FRED}@${FBLUE}\h${FPINK}[${FPINK}\t]"
-SETTING="${FGREEN}\u${FRED}@${FCYAN}\h${FRED}[${FPINK}\D{%Y-%m-%d} \t${FRED}][${FYELLOW}\w${FRED}]"
+SETTING="${FGREEN}\u${FRED}@${FCYAN}\h${FRED}[${FWHITE}$ip${FRED}]${FRED}[${FPINK}\D{%Y-%m-%d} \t${FRED}][${FYELLOW}\w${FRED}]"
 
 case `id -u` in
         0) PS1="${SETTING}${FRED}\n# ${MyIP} ${DEFAILT}"
@@ -146,6 +143,18 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# for History Tab
+alias h='history 25'
+case "$-" in
+    *i*)
+        bind '"\x1b\x5b\x41":history-search-backward'
+        bind '"\x1b\x5b\x42":history-search-forward'
+        ;;
+esac
+HISTFILESIZE=1000000000
+HISTSIZE=1000000
+HISTCONTROL=ignoredups
 
 # for P4
 #export P4PORT=10.9.32.71:1668
