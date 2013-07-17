@@ -126,7 +126,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-#alias gg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -155,6 +155,7 @@ esac
 HISTFILESIZE=1000000000
 HISTSIZE=1000000
 HISTCONTROL=ignoredups
+HISTTIMEFORMAT="%F %T ) "
 
 # for P4
 #export P4PORT=10.9.32.71:1668
@@ -167,5 +168,5 @@ HISTCONTROL=ignoredups
 #export LC_ALL=zh_TW.Big5
 #export LANG=zh_TW.Big5
 
-export PATH=~/bin:$PATH
+export PATH=$PATH:~/bin/arm-eabi-4.6/bin
 
