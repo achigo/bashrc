@@ -178,5 +178,5 @@ HISTTIMEFORMAT="%F %T ) "
 #export LC_ALL=zh_TW.Big5
 #export LANG=zh_TW.Big5
 
-export PATH=$PATH:~/bin/arm-eabi-4.6/bin
+export PATH=$PATH:~/bin/arm-eabi-4.6/bin:~/bin
 
