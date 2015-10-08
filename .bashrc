@@ -126,10 +126,10 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
-alias gg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %<(20)%an %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -167,16 +167,9 @@ HISTSIZE=1000000
 HISTCONTROL=ignoredups
 HISTTIMEFORMAT="%F %T ) "
 
-# for P4
-#export P4PORT=10.9.32.71:1668
-#export P4CLIENT=U18_WenChih_29_3
-#export P4USER=HTCTAIPEI\\achigo_liu
-#export P4PASSWD=eK2sUrY&
+#export LC_CTYPE=zh_TW.UTF-8
+#export LC_MESSAGES=zh_TW.UTF-8
+#export LC_TIME=en_US.UTF-8
 
-#export PATH=$PATH:/home/achigo/arm-eabi-4.4.0/bin;
-#export ARCH=arm
-#export LC_ALL=zh_TW.Big5
-#export LANG=zh_TW.Big5
-
-export PATH=$PATH:~/bin/arm-eabi-4.6/bin:~/bin
+export PATH=$PATH:~/bin:~/bin/arm-eabi-4.6/bin:~/bin:~/src/sbl/DS-5_linux_20121022_c75116
 
